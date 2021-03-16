@@ -2,3 +2,6 @@
 /token.pickle
 /data/
 /venv/
+/RegexTest.py
+/.idea/
+__pycache__/
