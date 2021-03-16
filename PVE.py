@@ -4,9 +4,9 @@ import parse_XCODB
 import sys, os
 
 
-path = "/home/beda/data/projekty/XOLogParser/data/merge/"
-name = "Nobody8987"
-SPREADSHEET_ID = '1TZHBYfwbXrFOCIVXUu_dwR38obeJpWjDzE8s0ern5Xg'
+path = "/path/to/data/log"
+name = "YourIngameName"
+SPREADSHEET_ID = 'yourGoogleSpreadSheetsCopyOfTableIDIDIDIDID0'
 
 # Read previous data from google sheet
 data = read_write_Data.read_google_sheet(spreadsheet_id=SPREADSHEET_ID)
