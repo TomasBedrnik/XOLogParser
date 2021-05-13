@@ -22,7 +22,7 @@ There are a few complications with running PVE.py and letting it write directly 
     - https://pypi.org/project/google-api-python-client/
     - https://google-auth.readthedocs.io/en/latest/index.html
     - *TODO: Use only one of them, they have duplicate functions...*
-- Import XORaidStatistics-empty.ods to your Google Drive and write down its ID.
+- Create empty Google Spreadsheet and File -> Import XORaidStatistics-empty.ods
 - Modify PVE.py. Replace those three strings with your own:
 ```
 path = "/path/to/data/log"
