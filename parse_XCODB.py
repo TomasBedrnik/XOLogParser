@@ -10,8 +10,7 @@ def read():
         [read_price("Fuel")[0], read_price("Fuel")[1]],
         [read_price("Battery")[0], read_price("Battery")[1]],
         [read_price("Scrap Metal")[0], read_price("Scrap Metal")[1]],
-        [read_price("Wires")[0], read_price("Wires")[1]],
-        ["___________________________________"]
+        [read_price("Wires")[0], read_price("Wires")[1]]
     ]
 
 
