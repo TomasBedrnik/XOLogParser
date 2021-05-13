@@ -55,6 +55,14 @@ def read(path, name, data):
                 data[i][y] = str(data[i][y])
             # print(" ")
 
+    unique_data = []
+    # Remove duplicities
+    for item in list(data):
+        if item[0] not in unique_data:
+            unique_data.append(item[0])
+        else:
+            data.remove(item)
+
     # Sort by first element (time) descending
     return sorted(data, reverse=True)
 
