@@ -1,7 +1,7 @@
-import read_write_Data
+import read_write_Google
 import parse_PVE
 import parse_XCODB
-import sys, os
+import os
 
 
 path = "/path/to/data/log"
@@ -9,7 +9,7 @@ name = "YourIngameName"
 SPREADSHEET_ID = 'yourGoogleSpreadSheetsCopyOfTableIDIDIDIDID0'
 
 # Read previous data from google sheet
-data = read_write_Data.read_google_sheet(spreadsheet_id=SPREADSHEET_ID)
+data = read_write_Google.read_google_sheet(spreadsheet_id=SPREADSHEET_ID)
 
 # Read new data from logs
 dirs = [d for d in os.listdir(path) if os.path.isdir(os.path.join(path, d))]
@@ -35,7 +35,7 @@ for directory in dirs:
             print("Type = " + data_combat[time][0], end=", ")
             print("Map = " + data_combat[time][1], end=", ")
             print("All PS = " + str(data_combat[time][2]), end=", ")
-            print("My PS = " + data_combat[time][3], end=", ")
+            print("My PS = " + str(data_combat[time][3]), end=", ")
             print("all points = " + str(data_combat[time][4]), end=", ")
             print("Standing = " + str(data_combat[time][5]), end=", ")
             print(" ")
@@ -67,7 +67,7 @@ else:
 data_sorted = sorted(data, reverse=True)
 
 # Write to google docs
-read_write_Data.write_google_sheet(spreadsheet_id=SPREADSHEET_ID, data=data_sorted)
+read_write_Google.write_google_sheet(spreadsheet_id=SPREADSHEET_ID, data=data_sorted)
 
 print("_____________________________")
 print("Plastic: ", parse_XCODB.read_price("Plastic")[0], ", ", parse_XCODB.read_price("Plastic")[1])
@@ -88,6 +88,6 @@ data_price = [
     [parse_XCODB.read_price("Wires")[0], parse_XCODB.read_price("Wires")[1]]
 ]
 
-read_write_Data.write_google_sheet_price(spreadsheet_id=SPREADSHEET_ID, data=data_price)
+read_write_Google.write_google_sheet_price(spreadsheet_id=SPREADSHEET_ID, data=data_price)
 
 # input("Press anything to exit...")

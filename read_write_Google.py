@@ -12,7 +12,6 @@ SCOPES = ['https://www.googleapis.com/auth/spreadsheets',
 
 
 # The ID and range of a sample spreadsheet.
-#SAMPLE_SPREADSHEET_ID = '1TZHBYfwbXrFOCIVXUu_dwR38obeJpWjDzE8s0ern5Xg'
 SHEET_NAME = 'Raid'
 DATA_TOP_LEFT = 'A21'
 DATA_TOP_LEFT_PRICE = 'D3'
