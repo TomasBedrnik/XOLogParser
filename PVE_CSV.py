@@ -2,9 +2,10 @@ import parse_PVE
 import parse_XCODB
 import csv
 
-path = "/path/to/data/log"
+# Mind the slashes - you have to use forward slash or two backslashes
+path = "C:/Users/John/Documents/My Games/Crossout/logs/"
 name = "YourIngameName"
-csv_file = '/tmp/test.csv'
+csv_file = 'C:\\Users\\John\\Desktop\\test.csv'
 
 data = []
 # Read data from logs

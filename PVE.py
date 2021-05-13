@@ -2,7 +2,8 @@ import read_write_Google
 import parse_PVE
 import parse_XCODB
 
-path = "/path/to/data/log"
+# Mind the slashes - you have to use forward slash or two backslashes
+path = "C:/Users/John/Documents/My Games/Crossout/logs/"
 name = "YourIngameName"
 SPREADSHEET_ID = 'yourGoogleSpreadSheetsCopyOfTableIDIDIDIDID0'
 
