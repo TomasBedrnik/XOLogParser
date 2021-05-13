@@ -1,5 +1,62 @@
 import re
+import os
 from collections import OrderedDict
+
+
+def read(path, name, data):
+    dirs = [d for d in os.listdir(path) if os.path.isdir(os.path.join(path, d))]
+    for directory in dirs:
+        print("__________")
+        print("Directory = " + directory)
+        path_game_log = os.path.join(path, directory, "game.log")
+        path_combat_log = os.path.join(path, directory, "combat.log")
+
+        data_game = parse_PVE_game_log(path_game_log)
+        data_combat = parse_PVE_combat_log(path_combat_log, name)
+        for time in data_game:
+            print("Time = " + time, end=", ")
+            print("Difficulty = " + data_game[time][0], end=", ")
+            print("Opponents = " + data_game[time][1], end=", ")
+            print("Type = " + data_game[time][2], end=", ")
+            print("Map = " + data_game[time][3], end=", ")
+            print("Time [s] = " + data_game[time][4], end=", ")
+            print("Resource type = " + data_game[time][5], end=", ")
+            print("Gained resources = " + data_game[time][6], end=", ")
+            print("Points = " + data_game[time][7], end=", ")
+            if time in data_combat.keys():
+                print("Type = " + data_combat[time][0], end=", ")
+                print("Map = " + data_combat[time][1], end=", ")
+                print("All PS = " + str(data_combat[time][2]), end=", ")
+                print("My PS = " + str(data_combat[time][3]), end=", ")
+                print("all points = " + str(data_combat[time][4]), end=", ")
+                print("Standing = " + str(data_combat[time][5]), end=", ")
+                print(" ")
+                print("               Players:", end=" ")
+                for player in data_combat[time][6]:
+                    print(player[0] + "[" + player[1] + "]: " + str(player[2]), end=" ")
+                data.append([directory[0:11] + time, data_game[time][2], data_game[time][0], data_game[time][3],
+                             data_game[time][1], data_game[time][5], data_game[time][6], data_game[time][4],
+                             data_game[time][7], data_combat[time][3], data_combat[time][5], data_combat[time][2],
+                             data_combat[time][4]])
+            else:
+
+                data.append([directory[0:11] + time, data_game[time][2], data_game[time][0], data_game[time][3],
+                             data_game[time][1], data_game[time][5], data_game[time][6], data_game[time][4],
+                             data_game[time][7]])
+            print(" ")
+
+    # Make everything string for proper sorting
+    if not data:
+        print('No data found.')
+    else:
+        for i in range(len(data)):
+            for y in range(len(data[i])):
+                # print(data[i][y], end=", ")
+                data[i][y] = str(data[i][y])
+            # print(" ")
+
+    # Sort by first element (time) descending
+    return sorted(data, reverse=True)
 
 
 def parse_PVE_game_log(path):

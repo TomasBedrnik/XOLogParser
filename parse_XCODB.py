@@ -2,6 +2,19 @@ import json
 import urllib.request
 
 
+def read():
+    return [
+        [read_price("Plastic")[0], read_price("Plastic")[1]],
+        [read_price("Electonics")[0], read_price("Electonics")[1]],
+        [read_price("Copper")[0], read_price("Copper")[1]],
+        [read_price("Fuel")[0], read_price("Fuel")[1]],
+        [read_price("Battery")[0], read_price("Battery")[1]],
+        [read_price("Scrap Metal")[0], read_price("Scrap Metal")[1]],
+        [read_price("Wires")[0], read_price("Wires")[1]],
+        ["___________________________________"]
+    ]
+
+
 def read_price(item):
     table_data = {
        "Plastic": 785,
