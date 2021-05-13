@@ -13,8 +13,9 @@ data_updated = parse_PVE.read(path, name, data)
 
 # Read prices from https://crossoutdb.com/
 data_price = parse_XCODB.read()
+data_price.append(["___________________________________"])
 
-with open(csv_file, 'w') as file:
+with open(csv_file, 'w', newline='', encoding='utf-8') as file:
     writer = csv.writer(file)
     writer.writerows(data_price)
     writer.writerows(data_updated)
