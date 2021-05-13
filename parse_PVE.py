@@ -17,24 +17,29 @@ def parse_PVE_game_log(path):
                        r"Gameplay statistic. gameResult '(.*?)'.*?"
                        r"(Plastic|Scrap_Epic|Scrap_Rare|Platinum|Scrap_Common|Accumulators) +([0-9]+).*?"
                        r"score ([0-9]+),", re.DOTALL)
-    matches = [m.groups() for m in regex.finditer(text)]
-    # print(type(matches))
-    for m in matches:
-        # print(type(m))
-        # print("Time = " + m[2], end=", ")
-        # print("Difficulty = " + m[0], end=", ")
-        # print("Opponents = " + m[1], end=", ")
-        # print("Type = " + m[3], end=", ")
-        # print("Map = " + m[4], end=", ")
-        # print("Finish reason = " + m[5], end=", ")
-        # print("Time [s] = " + m[6], end=", ")
-        # print("Result = " + m[7], end=", ")
-        # print("Resource type = " + m[8], end=", ")
-        # print("Gained resources = " + m[9], end=", ")
-        # print("Points = " + m[10], end=", ")
-        # print(" ")
-        if m[7] == "victory":
-            data[m[2]] = (m[0], m[1], m[3], m[4], m[6], m[8], m[9], m[10])
+
+    # split first to speed up the regex
+    parts = text.split("====== starting level")
+    for p in parts:
+        p = "====== starting level" + p
+        matches = [m.groups() for m in regex.finditer(p)]
+        # print(type(matches))
+        for m in matches:
+            # print(type(m))
+            # print("Time = " + m[2], end=", ")
+            # print("Difficulty = " + m[0], end=", ")
+            # print("Opponents = " + m[1], end=", ")
+            # print("Type = " + m[3], end=", ")
+            # print("Map = " + m[4], end=", ")
+            # print("Finish reason = " + m[5], end=", ")
+            # print("Time [s] = " + m[6], end=", ")
+            # print("Result = " + m[7], end=", ")
+            # print("Resource type = " + m[8], end=", ")
+            # print("Gained resources = " + m[9], end=", ")
+            # print("Points = " + m[10], end=", ")
+            # print(" ")
+            if m[7] == "victory":
+                data[m[2]] = (m[0], m[1], m[3], m[4], m[6], m[8], m[9], m[10])
     return data
     file.close()
 
