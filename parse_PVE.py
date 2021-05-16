@@ -55,6 +55,45 @@ def read(path, name, data):
                 data[i][y] = str(data[i][y])
             # print(" ")
 
+    resources = {
+      "Plastic": "Plastic",
+      "Scrap_Epic": "Electonics",
+      "Platinum": "Copper"
+    }
+    opponents = {
+      "military": "Steppenwolfs",
+      "scavengers": "Scavengers",
+      "nomads": "Nomads",
+      "psycho": "Lunatics",
+      "firestarters": "Firestarters",
+      "scientists": "Dawn's children"
+    }
+    type = {
+      "Blockpost": "Hit and run!",
+      "Oilevac": "The war for fire",
+      "Greatescape": "Gone in two minutes",
+      "Commtowers": "Data theft",
+      "TowerDefense": "Frontier defence",
+      "Keepheist": "Perimeter breach",
+      "Giantsiege": "Steel cradle",
+      "Bombrun": "The last convoy"
+    }
+    location = {
+      "factory": "Factory",
+      "port": "Terminal-45",
+      "powerplant": "Powerplant",
+      "chemical_plant": "Chemical plant",
+      "lost_coast": "Lost Coast",
+      "sand_crater": "Crater",
+      "bridge": "Bridge",
+      "rockcity": "Rock City",
+      "rockcity_2bases": "Founders Canyon",
+      "arizona_castle": "Wrath of Khan",
+      "iron_way": "Eastern Array",
+      "miners_way": "Cursed mines",
+      "cemetery_highway": "Dead Highway"
+    }
+
     unique_data = []
     # Remove duplicities
     for item in list(data):
@@ -62,6 +101,17 @@ def read(path, name, data):
             unique_data.append(item[0])
         else:
             data.remove(item)
+
+    # Replace internal names with public
+    for i, item in enumerate(data):
+        if item[1] in type:
+            data[i][1] = type[item[1]]
+        if item[4] in opponents:
+            data[i][4] = opponents[item[4]]
+        if item[5] in resources:
+            data[i][5] = resources[item[5]]
+        if item[3] in location:
+            data[i][3] = location[item[3]]
 
     # Sort by first element (time) descending
     return sorted(data, reverse=True)
